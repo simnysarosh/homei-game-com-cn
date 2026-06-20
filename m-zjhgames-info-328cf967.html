@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>再次遇见 · 炸金花</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fafaf9;
+      color: #1c1b1a;
+      font-family: 'Georgia', 'Noto Serif SC', 'Times New Roman', serif;
+      line-height: 1.7;
+      padding: 2rem 1.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 680px;
+      width: 100%;
+    }
+
+    .hero {
+      margin: 2.8rem 0 3.2rem 0;
+      border-bottom: 1px solid #e2ddd9;
+      padding-bottom: 2.2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.6rem;
+      color: #2e2b28;
+    }
+
+    .hero .sub {
+      font-size: 1rem;
+      color: #7a7570;
+      border-left: 3px solid #c8b9ac;
+      padding-left: 1rem;
+      margin: 0.6rem 0 0.2rem 0;
+    }
+
+    .summary {
+      background: #f3f0eb;
+      padding: 1.8rem 2rem;
+      border-radius: 2px;
+      margin: 2rem 0 2.4rem 0;
+      font-size: 1rem;
+      color: #2b2825;
+    }
+
+    .summary p {
+      margin-bottom: 0.8rem;
+    }
+
+    .summary p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin: 2.4rem 0 1.2rem 0;
+      color: #3b3733;
+      border-bottom: 1px dashed #ddd6cf;
+      padding-bottom: 0.4rem;
+    }
+
+    .highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin: 1.2rem 0 1.8rem 0;
+    }
+
+    .highlight-item {
+      flex: 1 1 180px;
+      background: #ffffff;
+      padding: 1.2rem 1.3rem 1.4rem 1.3rem;
+      border: 1px solid #eae4dd;
+      border-radius: 2px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+    }
+
+    .highlight-item h3 {
+      font-size: 1.05rem;
+      font-weight: 450;
+      margin-bottom: 0.5rem;
+      color: #3f3a36;
+    }
+
+    .highlight-item p {
+      font-size: 0.9rem;
+      color: #5b5550;
+    }
+
+    .usage-scenario {
+      background: #ffffff;
+      padding: 1.6rem 1.8rem;
+      border: 1px solid #e7dfd8;
+      margin: 2rem 0 2rem 0;
+      border-radius: 2px;
+    }
+
+    .usage-scenario p {
+      margin-bottom: 0.9rem;
+    }
+
+    .usage-scenario p:last-child {
+      margin-bottom: 0;
+    }
+
+    .faq-mini {
+      margin: 2.4rem 0 2.2rem 0;
+    }
+
+    .faq-mini details {
+      border-bottom: 1px solid #ece5de;
+      padding: 0.8rem 0;
+    }
+
+    .faq-mini details:first-of-type {
+      border-top: 1px solid #ece5de;
+    }
+
+    .faq-mini summary {
+      font-weight: 450;
+      cursor: pointer;
+      color: #3d3834;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-mini summary::after {
+      content: "＋";
+      color: #b0a59b;
+      font-size: 0.9rem;
+      transition: transform 0.1s;
+    }
+
+    .faq-mini details[open] summary::after {
+      content: "－";
+    }
+
+    .faq-mini .answer {
+      margin-top: 0.5rem;
+      padding-left: 0.3rem;
+      color: #5b5550;
+      font-size: 0.95rem;
+    }
+
+    .note-box {
+      background: #f7f4f0;
+      padding: 1.6rem 1.8rem;
+      margin: 2.8rem 0 1.5rem 0;
+      border-left: 3px solid #c1b1a2;
+      font-size: 0.95rem;
+      color: #3f3a36;
+    }
+
+    .note-box p {
+      margin-bottom: 0.6rem;
+    }
+
+    .link-sentence {
+      font-size: 1rem;
+      margin: 2rem 0 3rem 0;
+      line-height: 1.8;
+      padding: 0.4rem 0;
+    }
+
+    .footer-note {
+      border-top: 1px solid #e2dcd6;
+      padding-top: 2rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #8a837c;
+    }
+
+    a {
+      color: #5f5146;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #cbbcb0;
+      transition: text-decoration-color 0.15s;
+    }
+
+    a:hover {
+      text-decoration-color: #8f7b6a;
+      color: #3f352e;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 1rem 1rem;
+      }
+
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+
+      .summary {
+        padding: 1.4rem 1.2rem;
+      }
+
+      .highlight-item {
+        flex: 1 1 100%;
+      }
+
+      .usage-scenario {
+        padding: 1.2rem 1.2rem;
+      }
+
+      .note-box {
+        padding: 1.2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="hero">
+      <h1>再会 · 炸金花</h1>
+      <div class="sub">一次收藏，随时回来</div>
+    </div>
+
+    <div class="summary">
+      <p>记不清第几次在书签里翻到它，每一次点开都是熟悉的节奏。这大概就是老牌游戏的魅力——规则简单却从不重复，三张牌的对决，看点运气，也看点胆量。</p>
+      <p>如果你也喜欢那种短回合里的小小博弈，不如把这里记下来，下次想玩的时候，不必再费心寻找。</p>
+    </div>
+
+    <h2 class="section-title">为什么值得收藏</h2>
+    <div class="highlights">
+      <div class="highlight-item">
+        <h3>轻量开局</h3>
+        <p>没有漫长的加载，没有复杂的注册流程。从打开到坐下，只需几秒。</p>
+      </div>
+      <div class="highlight-item">
+        <h3>节奏顺手</h3>
+        <p>一局时间不长不短，等人、通勤、放空时都很合适。进退都在自己手里。</p>
+      </div>
+      <div class="highlight-item">
+        <h3>保持克制</h3>
+        <p>页面干净，没有喧闹的弹窗和诱导提醒。安静地玩，或者安静地离开。</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">适合什么场合</h2>
+    <div class="usage-scenario">
+      <p><strong>独自放松</strong> —— 不想看长视频，不想刷信息流，只想简单来两局，纯粹体验。</p>
+      <p><strong>和朋友闲聊时</strong> —— 偶尔提一句“要不要玩把炸金花”，然后各自摸出手机。不费事，不冷场。</p>
+      <p><strong>偶尔想起</strong> —— 隔了几天甚至几周再打开，规则还在，手感还在，没有陌生感。</p>
+    </div>
+
+    <div class="faq-mini">
+      <details>
+        <summary>需要下载安装吗？</summary>
+        <div class="answer">不需要。直接通过浏览器访问即可，没有客户端，不留缓存负担。</div>
+      </details>
+      <details>
+        <summary>会频繁要求登录吗？</summary>
+        <div class="answer">不会。大部分情况下可以直接开始，登录不是必经步骤。</div>
+      </details>
+      <details>
+        <summary>适合新手吗？</summary>
+        <div class="answer">炸金花的基本规则很直观，比大小、看牌、跟注。试过一两局就能上手。</div>
+      </details>
+    </div>
+
+    <div class="note-box">
+      <p>如果你是再次回到这里，大概已经熟悉了它的节奏。如果只是第一次听说，不妨从一局开始，慢慢感受。</p>
+      <p>我不打算用夸张的说法留住你——那些“最火爆”“必玩”的修饰词，反而离游戏本身更远。这里只是一处可以玩<a href="https://m-zjhgames.com">炸金花</a>的地方，不多不少。</p>
+    </div>
+
+    <div class="link-sentence">
+      如果你想把地址存下来，可以随时通过书签找到它：<a href="https://m-zjhgames.com">炸金花</a>。我自己的手机收藏夹里，它一直放在“常去”那个分组。
+    </div>
+
+    <div class="footer-note">
+      <p>—— 没有花哨的承诺，只有安静的页面。收藏与否，随你心意。</p>
+    </div>
+
+  </div>
+</body>
+</html>
